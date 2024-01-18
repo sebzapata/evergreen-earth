@@ -7,4 +7,10 @@ export const calculateHeatLoss = (
 export const calculatePowerHeatLoss = (
   heatLoss: number,
   heatingDegreeDays: number
-) => heatLoss / heatingDegreeDays;
+) => {
+  if (heatingDegreeDays === 0) {
+    return 0;
+  }
+
+  return heatLoss / heatingDegreeDays;
+};
