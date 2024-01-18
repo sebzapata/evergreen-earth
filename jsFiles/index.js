@@ -50,9 +50,7 @@ function getHousingFormData() {
         });
         allHeatingDegreeDays.forEach((heatingDegreeDay) => {
             const { location } = heatingDegreeDay;
-            // TypeScript 'should' be able to infer which type object is being handled below,
-            // but I didn't want to spend too much time on removing the error, when the code still runs as expected.
-            if (location.unsuccessful) {
+            if ("unsuccessful" in location) {
                 formObject[location.location] = Object.assign(Object.assign({}, formObject[location.location]), { warning: "Could not find design region" });
             }
             else {
