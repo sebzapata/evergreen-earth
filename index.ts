@@ -58,7 +58,7 @@ async function getHousingFormData() {
     // TypeScript 'should' be able to infer which type object is being handled below,
     // but I didn't want to spend too much time on removing the error, when the code still runs as expected.
 
-    if (heatingDegreeDay.location.unsuccessful) {
+    if (location.unsuccessful) {
       formObject[location.location] = {
         ...formObject[location.location],
         warning: "Could not find design region",
