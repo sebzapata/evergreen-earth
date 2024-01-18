@@ -18,15 +18,21 @@ export interface IHeatPump {
 
 export interface ISubmission {
   submissionId: string;
-  estimatedHeatLoss: number;
+  heatingLoss: number;
   designRegion: string;
   powerHeatLoss: number;
   recommendedHeatPump: string;
   costBreakdown: {
     label: string;
-    cost: string;
+    cost: number;
   }[];
   totalCost: number;
+}
+
+export interface ISubmissionWithoutRegion {
+  submissionId: string;
+  heatingLoss: number;
+  warning?: string;
 }
 
 export interface IWeatherData {
@@ -38,4 +44,15 @@ export interface IWeatherData {
     lat: number;
     lng: number;
   };
+}
+
+export interface IWeatherDataFail {
+  location: {
+    location: string;
+    unsuccessful: boolean;
+  };
+}
+
+export interface IFinalForm {
+  [location: string]: ISubmission | ISubmissionWithoutRegion;
 }
